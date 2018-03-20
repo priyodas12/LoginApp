@@ -1,0 +1,80 @@
+/**
+ * 
+ */
+package io.priyo.hibernate;
+
+import javax.persistence.Column;
+import javax.persistence.Embedded;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+
+/**
+ * @author Priyo:This is the model class,all member property set will be done here.Mapping in hibernate.cfg.xml will be done here.
+ *IMP: Annotation can be done before getter method;
+ */
+
+@Entity(name="USER_REG")                            /* treat this class as an entity.All entity class should be mapped in hibernate.cfg.xml */
+public class Userreg {
+	@Id @GeneratedValue
+	private int userId;
+	
+	@Column(name="ADDRESS")
+	@Embedded
+	private  Address address;
+	
+	@Column(name="FIRST_NAME")
+	private String firstName;
+	
+	@Column(name="LAST_NAME")
+	private String lastName;
+	
+	@Column(name="FAMILY_CARD_NO")
+	private long famCard;
+	
+	@Column(name="EMAIL_ID")
+	private String emailId;
+	
+	
+	public int getUserId() {
+		return userId;
+	}
+	public void setUserId(int userId) {
+		this.userId = userId;
+	}
+	public Address getAddress() {
+		return address;
+	}
+	public void setAddress(Address address) {
+		this.address = address;
+	}
+	public String getFirstName() {
+		return firstName;
+	}
+	public void setFirstName(String firstName) {
+		this.firstName = firstName;
+	}
+	public String getLastName() {
+		return lastName;
+	}
+	public void setLastName(String lastName) {
+		this.lastName = lastName;
+	}
+	public long getFamCard() {
+		return famCard;
+	}
+	public void setFamCard(int famCard) {
+		this.famCard = famCard;
+	}
+	public String getEmailId() {
+		return emailId;
+	}
+	public void setEmailId(String emailId) {
+		this.emailId = emailId;
+	}
+	
+	
+	
+
+}
