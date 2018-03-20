@@ -1,0 +1,41 @@
+package io.priyo.hibernate.execution;
+
+
+import org.hibernate.Session;
+import org.hibernate.SessionFactory;
+import org.hibernate.cfg.Configuration;
+
+import io.priyo.hibernate.Address;
+import io.priyo.hibernate.Userreg;
+
+public class MainClass {
+
+	public static void main(String[] args) {
+		
+		
+		Userreg ug=new Userreg();/*Intancite entity class here,and set member values*/
+		//ug.setUserId(24);
+		ug.setEmailId("csnkcnskdf@gamil.com");
+		ug.setFirstName("deben");
+		ug.setLastName("halder");
+		ug.setFamCard(641843564);
+		
+		Address addr=new Address();
+		addr.setStName("xyz Street");
+		addr.setCity("Kolkata");
+		addr.setState("WB");
+		addr.setZipcode("Kol-700105");
+		ug.setAddress(addr);
+		
+		
+			SessionFactory sf=new Configuration().configure("hibernate.cfg.xml").buildSessionFactory();/*One object per application,creates session*/
+			Session session=sf.openSession();
+			session.beginTransaction();
+			session.save(ug);
+			session.getTransaction().commit();
+			System.out.println("Retrived User name is "+ug.getFirstName()+"_"+ug.getLastName());
+			session.close(); 
+		
+	   
+	}
+}
